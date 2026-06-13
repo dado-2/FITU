@@ -1,0 +1,10 @@
+pandas
+streamlit
+joblib
+scikit-learn
+numpy
+matplotlib
+seaborn
+pytest
+Flask
+Flask-Cors

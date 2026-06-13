@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "Fitu",
+    "slug": "fitu",
+    "version": "1.0.0",
+    "sdkVersion": "56.0.0",
+    "platforms": ["android", "ios"],
+    "orientation": "portrait",
+    "splash": {
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "icon": "./app-icon.png",
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./app-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    }
+  }
+}

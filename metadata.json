@@ -1,0 +1,6 @@
+{
+  "name": "Fitu",
+  "description": "A clean minimalist companion app for tracking daily calories, water intake, macro progress, BMIs, and supporting healthy routines.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

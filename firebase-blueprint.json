@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "The user's personal info, daily calorie targets, height, weight, progress goals, and custom configurations.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique user ID" },
+        "name": { "type": "string", "description": "Display name of the user" },
+        "email": { "type": "string", "description": "Email address" },
+        "age": { "type": "number", "description": "User age in years" },
+        "gender": { "type": "string", "description": "User gender: Male or Female" },
+        "height": { "type": "number", "description": "Height in cm" },
+        "weight": { "type": "number", "description": "Current weight in kg" },
+        "targetWeight": { "type": "number", "description": "Target weight in kg" },
+        "activityLevel": { "type": "string", "description": "Sedentary, Light, Moderate, Very Active" },
+        "caloriesTarget": { "type": "number", "description": "Daily targeted calories to consume" },
+        "waterTarget": { "type": "number", "description": "Daily targeted water in ml" },
+        "notifications": { "type": "boolean", "description": "Notifications enabled status" },
+        "units": { "type": "string", "description": "Metric or Imperial value" },
+        "experienceLevel": { "type": "string", "description": "Beginner, Intermediate, Advanced" }
+      },
+      "required": ["uid", "name", "email"]
+    },
+    "Meal": {
+      "title": "Meal Record",
+      "description": "Log of a single meal track containing macros.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "calories": { "type": "number" },
+        "protein": { "type": "number" },
+        "carbs": { "type": "number" },
+        "fat": { "type": "number" },
+        "date": { "type": "string", "format": "date-time" },
+        "type": { "type": "string", "enum": ["Breakfast", "Lunch", "Dinner", "Snack"] }
+      },
+      "required": ["id", "userId", "name", "calories", "date"]
+    },
+    "Workout": {
+      "title": "Workout Record",
+      "description": "Log of a single workout performed by the user.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "caloriesBurned": { "type": "number" },
+        "durationMinutes": { "type": "number" },
+        "date": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "name", "caloriesBurned", "date"]
+    },
+    "WaterLog": {
+      "title": "Water Log",
+      "description": "Log of an intake of water.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "amountMl": { "type": "number" },
+        "date": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "amountMl", "date"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Matches exact user Profile document by their uid"
+    },
+    "/users/{userId}/meals/{mealId}": {
+      "schema": "Meal",
+      "description": "User's individual logged meals"
+    },
+    "/users/{userId}/workouts/{workoutId}": {
+      "schema": "Workout",
+      "description": "User's individual logged workouts"
+    },
+    "/users/{userId}/waterLogs/{waterLogId}": {
+      "schema": "WaterLog",
+      "description": "User's water consumption tracking logs"
+    }
+  }
+}
